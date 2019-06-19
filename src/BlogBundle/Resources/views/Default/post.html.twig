@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Posts{% endblock %}
+
+{% block body %}
+
+
+<h1>Welcome to the Prueba:index page</h1>
+
+<h1>{{ post.title}}</h1>
+<p> {{ post.body }}</p>
+<h4>{{ post.createAt|date("m/d/Y H:i:s")}}</h4>
+
+
+{% endblock %}
