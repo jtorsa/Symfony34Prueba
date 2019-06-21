@@ -25,17 +25,25 @@ class PostController extends Controller
      */
     public function addAction(){
        
-        
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('BlogBundle:User');
+
+        //Creamos usuario
+        $user = $repository->find(1);
+
+
+
+
         //Creamos la entidad
         $post = new Post();
-        $post->setTitle('Prueba');
+        $post->setTitle('Prueba con user3');
         $post->setBody('Es el cuerpo');
         $post->setTag('untag');
         $post->setCreateAt(new \DateTime('now'));
-        $post->setIduser(1);
-
+        $post->setUser($user);
+        
         //Persistimos la entidad
-        $em = $this->getDoctrine()->getManager();
+      
         $em->persist($post);
         $em->flush();
 

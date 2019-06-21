@@ -43,11 +43,10 @@ class Post
     private $tag;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="iduser", type="integer")
+     *@ORM\ManyToOne(targetEntity="User", inversedBy="posts")
+     *@ORM\JoinColumn(name="user_id", referencedColumnName="id") 
      */
-    private $iduser;
+    private $user;
 
     /**
      * @var \DateTime
@@ -123,30 +122,6 @@ class Post
     }
 
     /**
-     * Set iduser
-     *
-     * @param integer $iduser
-     *
-     * @return Post
-     */
-    public function setIduser($iduser)
-    {
-        $this->iduser = $iduser;
-
-        return $this;
-    }
-
-    /**
-     * Get iduser
-     *
-     * @return int
-     */
-    public function getIduser()
-    {
-        return $this->iduser;
-    }
-
-    /**
      * Set createAt
      *
      * @param \DateTime $createAt
@@ -216,5 +191,29 @@ class Post
     public function getTag()
     {
         return $this->tag;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \BlogBundle\Entity\User $user
+     *
+     * @return Post
+     */
+    public function setUser(\BlogBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \BlogBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
